@@ -2,14 +2,26 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { User, Settings, Shield, CreditCard, HelpCircle, LogOut, ChevronRight, Zap, Moon, Bell } from 'lucide-react';
+import { User, Settings, Shield, CreditCard, HelpCircle, LogOut, ChevronRight, Zap, Moon, Bell, LucideIcon } from 'lucide-react';
+
+interface MenuItem {
+  icon: LucideIcon;
+  label: string;
+  value?: string;
+  danger?: boolean;
+}
+
 interface MenuScreenProps {
   onBack: () => void;
 }
+
 export function MenuScreen({
   onBack
 }: MenuScreenProps) {
-  const menuGroups = [{
+  const menuGroups: Array<{
+    title: string;
+    items: MenuItem[];
+  }> = [{
     title: 'Account',
     items: [{
       icon: User,
